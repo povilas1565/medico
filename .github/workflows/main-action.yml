@@ -1,0 +1,48 @@
+name: Docker Image CI
+# Test, Build and Deploy
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+# Test the flask app and then build
+  test-and-build:
+
+    runs-on: ubuntu-latest
+    env:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: medico
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        pip3 install -r requirements.txt
+    - name: Test with unittest
+      run: |
+        python3 -m pytest
+    - uses: actions/checkout@v2
+    - name: Docker login
+      env:
+        DOCKER_USERNAME: elmarcorm
+        DOCKER_PASSWORD:   Anonimo25*
+      run: |
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    
+    - uses: actions/checkout@v2
+    - name: Docker build
+      run: |
+        docker build . --file Dockerfile --tag elmarcorm/medico:latest
+ 
+    - name: Docker push
+      run: |
+        docker push elmarcorm/medico:latest
+        
+    
+      
