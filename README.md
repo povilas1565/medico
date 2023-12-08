@@ -30,12 +30,12 @@
 To run the project, first clone the github repository -
 
 ```bash
-  git clone https://github.com/SJDev2000/medico_final.git
+  git clone https://github.com/povilas1565/medico.git
 ```
-Then, change your working directory to medico_final
+Then, change your working directory to medico
 
 ```bash
-  cd medico_final
+  cd medico
 ```
 Finally run the project by -
 ```bash
@@ -43,7 +43,7 @@ Finally run the project by -
 ```
 At last, just initialize the database by entering into running docker container -
 ```bash
-  sudo docker exec -it medico_final_web_1 /bin/bash
+  sudo docker exec -it medico_web_1 /bin/bash
   python3
 ``` 
 ```bash
@@ -63,21 +63,10 @@ To run tests, run the following command -
 
 ## CI/CD Workflow
 
-https://github.com/SJDev2000/medico_final/blob/main/.github/workflows/main-action.yml
+https://github.com/SJDev2000/medico/blob/main/.github/workflows/main-action.yml
 
-Pipeline is divided into two stages:
-
-* test-and-build - Run tests and build docker image upon successful test run, that will be published to Dockerhub
-* deploy - Deploys the latest image from dockerhub to EC2 instance.
+* test-and-build - Run tests and build docker image upon successful test run, that will be published to 
 
 
-## Authors
-
-- [@Abhishek Jha](https://github.com/13AbhishekJha)
-- [@Shivam Mishra](https://github.com/shivam1974)
-- [@Nancy Gandhi](https://github.com/nancygandhi22)
-- [@Gayathri Rajendran](https://github.com/GayathriRajendran17)
-- [@Priyanshi Goyal](https://github.com/priyanshi149)
-- [@Adarsh Singh](https://github.com/adarsh2912)
 
 
